@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useRef, useState } from 'react';
+import Complete from './components/AutoComplete';
+import Test from './Test';
+
+const mockVal = (str: string, repeat: number = 1) => {
+  return {
+    value: str.repeat(repeat),
+    id: Math.random()
+  };
+};
 
 function App() {
+  const ref = useRef<any>(null);
+
+  const [value, setValue] = useState('');
+  const [options, setOptions] = useState<{ value: string; id: number }[]>([]);
+
+  function onChange(v: string) {
+    setValue(v);
+  }
+
+  function onSearch(v: string) {
+    setOptions(v ? [mockVal(v), mockVal(v, 2), mockVal(v, 3)] : []);
+  }
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Complete ref={ref} options={options} value={value} onChange={onChange} onSearch={onSearch} />
+
+      <Test />
     </div>
   );
 }

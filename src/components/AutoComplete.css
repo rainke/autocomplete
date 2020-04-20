@@ -1,0 +1,48 @@
+.auto-container {
+  position: relative;
+  width: 300px;
+}
+
+.auto-container input {
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  text-indent: 6px;
+}
+
+.auto-container input:focus {
+  outline: 1px solid #999;
+}
+
+.auto-list {
+  position: absolute;
+  width: 100%;
+  top: 35px;
+  left: 0;
+  box-shadow: 0px 5px 10px #666;
+}
+
+.auto-list .auto-list-item {
+  background-color: #fff;
+  line-height: 24px;
+  cursor: pointer;
+  transition: all .1s ease-in;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+.auto-list .auto-list-item.active {
+  background-color: #eee;
+}
+
+.auto-list .auto-list-item:last-child {
+  border-bottom: none;
+}
+
+.auto-list .auto-list-item:hover {
+  background-color: lightblue;
+}
